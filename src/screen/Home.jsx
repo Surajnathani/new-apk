@@ -11,6 +11,7 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 
 const Home = ({ navigation }) => {
+  const apiKey = process.env.EXPO_PUBLIC_API_KEY;
   const [data, setData] = useState([]);
   const [Select, setSelect] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -56,7 +57,7 @@ const Home = ({ navigation }) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=in&apiKey=34dcf62c6b4f409790d9dbd15475419d&category=${categories[Select].category}`
+        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}&category=${categories[Select].category}`
       );
 
       const data = await response.json();
@@ -72,7 +73,7 @@ const Home = ({ navigation }) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=in&apiKey=34dcf62c6b4f409790d9dbd15475419d&category=${category}`
+        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}&category=${category}`
       );
 
       const data = await response.json();

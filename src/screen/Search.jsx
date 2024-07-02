@@ -11,6 +11,7 @@ import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import Card from "../components/Card";
 
 const Search = ({ navigation }) => {
+  const apiKey = process.env.EXPO_PUBLIC_API_KEY;
   const [searchText, setSearchText] = useState("");
   const [data, setData] = useState([]);
 
@@ -19,7 +20,7 @@ const Search = ({ navigation }) => {
     if (text.length > 2) {
       try {
         const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=in&apiKey=34dcf62c6b4f409790d9dbd15475419d&q=${text}`
+          `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}&q=${text}`
         );
         const data = await response.json();
         setData(data.articles);
